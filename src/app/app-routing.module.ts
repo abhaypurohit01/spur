@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-const routes: Routes = [];
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+const routes: Routes = [
+  { path: "", component: LoginComponent },
+  { path: "home", component: HomeComponent },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: true,
+    scrollPositionRestoration: 'enabled',
+    anchorScrolling: 'enabled',
+    preloadingStrategy: PreloadAllModules
+  })
+   ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routedComponents = [
+  LoginComponent
+]

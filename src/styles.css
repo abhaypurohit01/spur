@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+.ngx-toastr {
+    background-color: #030303;
+    pointer-events: auto;
+}
+#toast-container .ngx-toastr {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 6px;
+    padding: 15px 15px 15px 50px;
+    width: 300px;
+    border-radius: 3px;
+    background-position: 15px center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    box-shadow: 0 0 12px #999;
+    color: #fff;
+}
+.toast-bottom-right {
+    right: 12px;
+    bottom: 12px;
+}
+#toast-container {
+    pointer-events: none;
+    position: fixed;
+    z-index: 999999;
+}
+.toast-warning {
+    background-image: url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…4-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z'/%3E%3C/svg%3E);
+    background-color: #f89406;
+}

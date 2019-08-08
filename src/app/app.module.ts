@@ -1,20 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './common/header/header.component';
-import { SidebarComponent } from './common/sidebar/sidebar.component';
-import { FooterComponent } from './common/footer/footer.component';
-import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminModule } from './admin/admin.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { HomeModule } from "./home/home.module";
+import { SharedModule } from "./common/shared.module";
 const routes: Routes = [
-  {path:'', component: HomeComponent},
-  {path:'dashboard', component: DashboardComponent}
+  {path:'login', component: LoginComponent}
 ];
 
 
@@ -24,18 +22,24 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    SidebarComponent,
-    FooterComponent,
-    MainComponent,
-    LoginComponent,
-    DashboardComponent
+
+    LoginComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AdminModule,
+    FormsModule,ReactiveFormsModule,
+    HttpClientModule,
+    HomeModule,
+    SharedModule,
+    ToastrModule.forRoot({
+			timeOut: 10000,
+			// positionClass: 'toast-top-full-width',
+			positionClass: 'toast-bottom-right',
+			preventDuplicates: true,
+		}),
     RouterModule.forRoot(routes)
   ],
   providers: [],

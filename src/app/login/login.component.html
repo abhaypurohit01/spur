@@ -1,1 +1,46 @@
-<p>login works!</p>
+
+
+<div class="wrapper">
+        <div class="container login-main-container">
+            <div class="login-form login-class-container zoomIn animated col-sm-5">
+   <form  [formGroup]="signupForm" novalidate="novalidate" autocomplete="off" (ngSubmit)="onSignSubmit(signupForm)" >
+        <h4 class="modal-title heading-login col-sm-4">Login</h4>
+        <p class="text-muted login-text">Sign In to your account</p>
+
+            
+            <div class="form-group">
+          
+              <input type="text" name="name" class="form-control" formControlName="Username" placeholder="Username" required autofocus="">
+              
+              <!-- <div *ngIf="nameUser.touched">
+                <div class="alert alert-danger" *ngIf="nameUser.errors?.required">
+                  Username is Required!
+                </div>
+              </div> -->
+
+            </div> 
+      
+            <div class="form-group">
+            
+              <input type="password" name="contact" class="form-control" formControlName="Password" placeholder="Password" maxlength="10"  required >
+              
+              <!-- <div *ngIf="contactUser.touched">
+                <div class="alert alert-danger" *ngIf="contactUser.errors?.required">
+                  Password is Required!
+                </div>
+              </div> -->
+
+            </div>
+            <div class="form-group small clearfix">
+                <a class="" href="javascript:void(0)">Forgot Password?</a>
+            </div>
+    
+            <button type="submit" name="button" class="btn btn-lg btn-primary btn-block float-right" [disabled] = "signupForm.invalid">Sign In</button>
+
+      </form>
+
+    </div>
+</div>
+
+</div>
+      <!-- {{ signupForm.value | json}} -->
