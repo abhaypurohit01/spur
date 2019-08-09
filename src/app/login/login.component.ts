@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
   }
 
   rolelst: any;
-  onSignSubmit(){
+  onSignSubmit(signupForm:any){
+    console.log(signupForm)
     console.log(this.signupForm.value);
     this.signupForm.controls.Username, this.signupForm.controls.Password
     this.dataservice.getuser(this.signupForm.value).subscribe(res => {

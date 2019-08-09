@@ -39,14 +39,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
+  private tokenTimer: any;
+  private expirationDate: any;
+  isExpiresInDuration(response: any) {
+    const expiresInDuration = response;
+    const now = new Date();
+    this.expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+    console.log(this.expirationDate);
+    // console.log(this.expirationDate.getTime() - now.getTime());
+    this.tokenTimer = setTimeout(() => {
+      this.onRemove();
+    }, expiresInDuration * 1000);
+  }
+
   onRemove(): any {
+    clearTimeout(this.tokenTimer);
+    clearTimeout(this.expirationDate);
     sessionStorage.removeItem("Signup-info");
     this._router.navigate(["login"]);
     // location.reload();
   }
-  onlogout() {
-    this.onRemove();
-  }
+  // onlogout() {
+  //   this.onRemove();
+  // }
 
   
 

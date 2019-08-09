@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./common/shared.module";
+import { CommonModule } from '@angular/common';
 const routes: Routes = [
   {path:'login', component: LoginComponent}
 ];
@@ -22,7 +23,6 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent
   ],
   imports: [
@@ -30,6 +30,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     AppRoutingModule,
     AdminModule,
+    CommonModule,
     FormsModule,ReactiveFormsModule,
     HttpClientModule,
     HomeModule,
