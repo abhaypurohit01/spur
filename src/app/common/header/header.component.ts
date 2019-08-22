@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from "@angular/router";
 import { Observable, Subscription } from "rxjs";
 import { DataService } from '../../data.service';
+import { AESEncryptDecryptServiceService } from '../../aesencrypt-decrypt-service.service'; 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,7 +17,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private _router: Router,
-    private dataservice: DataService
+    private dataservice: DataService,
+    private _AESEncryptDecryptService: AESEncryptDecryptServiceService
   ) { }
 
   ngOnInit() {
@@ -28,11 +31,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   UserName: any;
 
   onExit(){
+    debugger
     if (
       sessionStorage.getItem("Signup-info") !== null
     ){
-      this.Auth = JSON.parse(sessionStorage.getItem("Signup-info"));
-      this.UserName = this.Auth[0]["Username"];
+      let val = sessionStorage.getItem("Signup-info");
+      console.log(val)
+      let decryptedText = this._AESEncryptDecryptService.Decrypt(val);
+      this.Auth = JSON.parse(decryptedText);
+      console.log(decryptedText);
+       this.UserName = this.Auth[0]["Username"];
+
     }
     else {
       this.onRemove();

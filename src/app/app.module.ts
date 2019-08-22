@@ -12,6 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./common/shared.module";
 import { CommonModule } from '@angular/common';
+
+
 const routes: Routes = [
   {path:'login', component: LoginComponent}
 ];
